@@ -12,13 +12,13 @@ head(RLdata500)
 
 # using compare.dedup to generate the features
 # blockfld aliviates the problem of n*(n-1)/2, 
-# compare columns 1 or, 5 up to 7 for two records to  qualify to become a pair
+# compare columns 1, 3 or, 5 up to 7 for two records to  qualify to become a pair
 # row 2 and 43 from RLdata500 = firstname similar (column 1 in nlockfld) 
 # and bday similar (column 5:7 in nlockfld) 
 # strcmp executes the levenshteinSim (strcmpfun) function on columns 2,3 and 4
 ?compare.dedup()
 rec.pairs <- compare.dedup(RLdata500
-                           ,blockfld = list(1, 5:7)
+                           ,blockfld = list(1, 3, 5:7)
                            ,strcmp = c(2,3,4)
                            ,strcmpfun = levenshteinSim)
 
@@ -33,13 +33,11 @@ matches <- rec.pairs$pairs
 
 # give me the matches of all rows on which the restriction had be defined in blockfld for 
 # 1 = same | 0  = not same
-# gives the matches of all rowes in pairs because of rec.pairs$pairs
-matches[c(1:1204), ]
+head(matches) # show first 6 record pairs
+matches[2,] # show pair in row 2 (id1: 1, id2: 64)
+RLdata500[1,] # show patient in row 1
+RLdata500[64,] # show patient in row 64
 
-#fname_c1 = same and bday = same
-RLdata500[2,]
-RLdata500[43,]
-
-#fname_c1 = same and bday = not same
-RLdata500[1,]
-RLdata500[174,]
+matches[13,] # show pair in row 13 (id1: 2, id2: 43)
+RLdata500[2,] # show patient in row 2
+RLdata500[43,] # show patient in row 43
