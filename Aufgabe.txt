@@ -1,0 +1,7 @@
+Dear Professor Sariyar:
+I am using your great tools to do matching. I got a quick question:
+In getPairs (matches or links), we have
+filter.match = c("match", "unknown", "nonmatch"),
+filter.link = c("nonlink", "possible", "link"),
+do we have any ways to calculate their confidence levels related?
+Thanks and best regards,
