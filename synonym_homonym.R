@@ -23,7 +23,7 @@ data <- RLBigDataDedup(testdata, identity = identity.RLdata500,
 # man kann mit epiClassified schauen, ob sie Link oder Non-Link sind,
 # jedoch weiss man nicht, ob es einen match ist oder nicht
 data <- compare.dedup(testdata, identity = identity.RLdata500,
-                       blockfld=list(1,5:7),
+                       blockfld=list(1,3,5:7),
                        strcmp = c(2,3,4),
                        strcmpfun = levenshteinSim)
 

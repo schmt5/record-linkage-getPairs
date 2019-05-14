@@ -7,10 +7,10 @@ library(RecordLinkage)
 data(RLdata500)
 
 ### make pairs
-# man bekommteine liste mit:
+# man bekommt eine Liste mit:
 # "data", "pairs", "frequencies" und "type"
 data <- compare.dedup(RLdata500,
-                      blockfld = list(1, 5:7), # focusing of certain constraints
+                      blockfld = list(1,3,5:7), # focusing of certain constraints
                       strcmp = c(2,3,4),
                       strcmpfun = levenshteinSim)
 
@@ -18,19 +18,16 @@ data <- compare.dedup(RLdata500,
 summary(data)
 
 ### calculate weight
-# es gibt zusätzlich variabel:
-# Wdata mit den weights
+# es gibt zusaetzlich Variable:
 ?epiWeights
 data <- epiWeights(data)
-length(data$pairs$id1)
-length(data$Wdata)
-data$pairs[1,]
-data$data[1,]
-data$data[174,]
 
-# overview of data rpairs
+# Wdata mit den weights
+# data is a list
+length(data$pairs$id1) # anzahl pairs
+length(data$Wdata) # anzahl weights
+# overview of data rpairs - weights
 head(data$Wdata)
-?epiWeights
 
 ### get paris
 ?getPairs
@@ -38,7 +35,8 @@ head(data$Wdata)
 # generate pairs of data.frame data
 rpairs <- getPairs(data, single.rows=FALSE)
 # show all record pairs with weights between 0.5 and 0.6
-getPairs(data, min.weight=0.5, max.weight=0.6)
+head(getPairs(data, min.weight=0.5, max.weight=0.6))
+tail(getPairs(data, min.weight=0.5, max.weight=0.6))
 # not number of pairs, if single.row = FALSE, because 1 pairs use 3 rows
 length(rpairs$id)
 
