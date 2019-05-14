@@ -37,6 +37,8 @@ head(data$Wdata)
 
 # generate pairs of data.frame data
 rpairs <- getPairs(data, single.rows=FALSE)
+# show all record pairs with weights between 0.5 and 0.6
+getPairs(data, min.weight=0.5, max.weight=0.6)
 # not number of pairs, if single.row = FALSE, because 1 pairs use 3 rows
 length(rpairs$id)
 
