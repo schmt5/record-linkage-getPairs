@@ -63,10 +63,12 @@ getFalseNeg(result)
 # b in Vierfeldertafel
 getFalsePos(result) # von wo weiss R das es FalsePos ist?
 
+?optimalThreshold
+#  If no further arguments are given,
+# a threshold which minimizes the absolute number of misclassified record pairs is returned.
+optimalThreshold(data)
 
+optimalThreshold(data, my=0.6) # wir akzeptieren viele Falsch-Pos (False-matches)
 
-
-
-# see wrongly classified pairs
-
-
+?getParetoThreshold
+getParetoThreshold(data, quantil = 0.95)
