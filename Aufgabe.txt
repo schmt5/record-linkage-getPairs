@@ -5,3 +5,6 @@ filter.match = c("match", "unknown", "nonmatch"),
 filter.link = c("nonlink", "possible", "link"),
 do we have any ways to calculate their confidence levels related?
 Thanks and best regards,
+
+
+hudelhu
