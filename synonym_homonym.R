@@ -49,10 +49,9 @@ head(getPairs(result, filter.link="link", withClass = TRUE))
 # false non-match = synonym
 # Bsp: Handy und Mobiltelefon
 # Bsp. für Person: Martin und Mäddä (gleiche Person ist gemeint)
-# Haben keinen Match, sind aber trotzdem Sinnverwandt (gleiches Objekt gemeint)
+# Haben keinen Link, sind aber trotzdem Sinnverwandt (gleiches Objekt gemeint)
 # c in Vierfeldertafel
 getFalseNeg(result)
-?getFalsePos
 
 
 # false match = homonym
@@ -72,3 +71,10 @@ optimalThreshold(data, my=0.6) # wir akzeptieren viele Falsch-Pos (False-matches
 
 ?getParetoThreshold
 getParetoThreshold(data, quantil = 0.95)
+
+
+?getPairs
+length(getPairs(result, filter.match="match", filter.link="link")$id)
+length(getPairs(result, filter.match="match", filter.link="nonlink", single.rows=TRUE)$id.1)
+
+

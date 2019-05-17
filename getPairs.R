@@ -34,14 +34,16 @@ head(data$Wdata)
 
 # generate pairs of data.frame data
 rpairs <- getPairs(data, single.rows=FALSE)
+# not number of pairs, if single.row = FALSE, because 1 pairs use 3 rows
+length(rpairs$id)
+# overview of data rpairs
+head(rpairs)
+
+
 # show all record pairs with weights between 0.5 and 0.6
 head(getPairs(data, min.weight=0.5, max.weight=0.6))
 tail(getPairs(data, min.weight=0.5, max.weight=0.6))
-# not number of pairs, if single.row = FALSE, because 1 pairs use 3 rows
-length(rpairs$id)
 
-# overview of data rpairs
-head(rpairs)
 
 # show all record pairs with weights between 0.5 and 0.6
 getPairs(data, min.weight=0.5, max.weight=0.6)
@@ -55,7 +57,6 @@ getPairs(data, min.weight=0.5, max.weight=0.6)
 # @required treshold.upper = 0.5
 # treshold.lower = threshold.upper, if not defined
 cldata <- epiClassify(data, 0.5)
-
 # possible prediction-levels: Not-linked and linked (No Possible's because only treshold.upper defined)
 summary(cldata$prediction)
 

@@ -17,6 +17,7 @@ head(RLdata500)
 # and bday similar (column 5:7 in nlockfld) 
 # strcmp executes the levenshteinSim (strcmpfun) function on columns 2,3 and 4
 ?compare.dedup()
+summary(compare.dedup(RLdata500))
 rec.pairs <- compare.dedup(RLdata500
                            ,blockfld = list(1, 3, 5:7)
                            ,strcmp = c(2,3,4)
