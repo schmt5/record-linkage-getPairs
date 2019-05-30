@@ -20,6 +20,11 @@ summary(data)
 ### calculate weight
 # es gibt zusaetzlich Variable:
 ?epiWeights
+
+#########
+### weight calculation
+#########
+
 data <- epiWeights(data)
 
 # Wdata mit den weights
@@ -29,6 +34,10 @@ length(data$Wdata) # anzahl weights
 # overview of data rpairs - weights
 head(data$Wdata)
 
+
+###########
+### get pairs
+##########
 ### get paris
 ?getPairs
 
