@@ -11,23 +11,24 @@ testdata <- RLdata500
 
 # create record pairs
 ?RLBigDataDedup
-data <- RLBigDataDedup(testdata, identity = identity.RLdata500,
-                         blockfld=list(1,3,5:7))
+# data <- RLBigDataDedup(testdata, identity = identity.RLdata500,
+#                         blockfld=list(1,3,5:7))
 
+# damit man is_Match verwenden kann, muss man mit RLBigDataDedup arbeiten
 data <- RLBigDataDedup(testdata, identity = identity.RLdata500,
                        blockfld=list(1,3,5:7),
                        strcmp = c(2,3,4),
                        strcmpfun = "levenshtein")
 
-# mit compare.dedup gibt es Variabel "is_match" nicht
+# mit compare.dedup gibt es Variabel "is_match" nicht darum kann man es so nicht machen
 # man kann mit epiClassified schauen, ob sie Link oder Non-Link sind,
 # jedoch weiss man nicht, ob es einen match ist oder nicht
-data <- compare.dedup(testdata, identity = identity.RLdata500,
-                       blockfld=list(1,3,5:7),
-                       strcmp = c(2,3,4),
-                       strcmpfun = levenshteinSim)
+# data <- compare.dedup(testdata, identity = identity.RLdata500,
+#                       blockfld=list(1,3,5:7),
+#                       strcmp = c(2,3,4),
+#                       strcmpfun = levenshteinSim)
 
-# deleted 3
+
 # calculate epilink weights
 data <- epiWeights(data)
 
@@ -44,6 +45,7 @@ result <- epiClassify(data, 0.5)
 
 # show all links, do not show classification in the output
 head(getPairs(result, filter.link="link", withClass = TRUE))
+tail(getPairs(result, filter.link="link", withClass = TRUE))
 
 
 # false non-match = synonym
@@ -61,6 +63,11 @@ getFalseNeg(result)
 # Haben einen Match, da beide gleich sind, jedoch zwei unterschiedliche Objekte
 # b in Vierfeldertafel
 getFalsePos(result) # von wo weiss R das es FalsePos ist?
+
+#######
+# Fragestellung in der Aufgabe:
+# do we have any ways to calculate their confidence levels related?
+#######
 
 ?optimalThreshold
 #  If no further arguments are given,
