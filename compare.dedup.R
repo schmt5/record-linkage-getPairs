@@ -19,8 +19,8 @@ head(RLdata500)
 ?compare.dedup()
 summary(compare.dedup(RLdata500))
 rec.pairs <- compare.dedup(RLdata500
-                           ,blockfld = list(1, 3, 5:7)
-                           ,strcmp = c(2,3,4)
+                           ,blockfld = list(1, 3, 5:7) #we dont choose 2 and 4 because of too many NA in it
+                           ,strcmp = c(2,3,4) # 
                            ,strcmpfun = levenshteinSim)
 
 # Overview of the data
@@ -28,7 +28,9 @@ summary(rec.pairs)
 
 # Overview of the data
 str(rec.pairs)
+ 
 
+# rec.pairs is list and there is dataframe of name pairs which is created in compare.dedup
 # assign dataframe rec.pairs$pairs to matches 
 matches <- rec.pairs$pairs
 
