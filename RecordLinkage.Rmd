@@ -77,28 +77,24 @@ Werte von 0 bis 1
 
 <p><span style="color:blue"><b>2. Variante mit emWeight:</b>"Calculates weights for Record Linkage based on an EM algorithm"</span></p>
 Werte von -10 bis 35
-
+#### epiWeigth in example
 ```{r weight}
-?epiWeights
 rec.pairs <- epiWeights(rec.pairs)
 length(rec.pairs$pairs$id1) #Anzahl Pairs
 length(rec.pairs$Wdata) #Anzahl Weights
 head(rec.pairs$Wdata) #Overview of data rparis - weights
 ```
-
+For each pair a weight has been calculated
 ### Vorgehen 3: getPairs()
 
 <li>show paris with the weights of them</li>
 <li>use filter on weights</li>
 
 ```{r getPairs}
-?getPairs
-rpairs <- getPairs(rec.pairs, single.rows=FALSE) #generate pairs of data.frame rec.pairs
 head(getPairs(rec.pairs, min.weight=0.5, max.weight=0.6)) #show all record pairs with weights between 0.5 and 0.6
 tail(getPairs(rec.pairs, min.weight=0.5, max.weight=0.6))
+rpairs <- getPairs(rec.pairs, single.rows=FALSE) #generate pairs of data.frame rec.pairs
 length(rpairs$id) #not number of pairs, if single.row = FALSE, because 1 pairs use 3 rows
-head(rpairs) #overview of data rpairs
-getPairs(rec.pairs, min.weight=0.5, max.weight=0.6) #all record pairs with weights between 0.5 and 0.6
 
 ```
 
@@ -116,17 +112,18 @@ getPairs(rec.pairs, min.weight=0.5, max.weight=0.6) #all record pairs with weigh
 Neue Variablen: prediction und threshold
 
 <li>Threshold.upper --> Schwellenwet ab wann Pairs zu links werden</li>
-<li>Threshold.under --> ...</li>
+<li>Threshold.under --> Schwellenwert ab wann non-links zu possible links werden</li>
 
 Possible prediction-levels: non-linked and linked (no possible's because only threshold.upper defined)
+
+If no threshold.under is defined; treshold.under = treshold.upper 
 </span>
 ```{r classify}
-?epiClassify
 cldata <- epiClassify(rec.pairs, 0.5) #threshold.lower = threshold.upper if not defined
 summary(cldata$prediction)
 cldata <- epiClassify(rec.pairs, 0.6, 0.4)
 summary(cldata$prediction)
-getPairs(cldata, show="links", single.rows=FALSE) #now we can filter, show="links", "nonlinks", "possible" or "all"
+head(getPairs(cldata, show="links", single.rows=FALSE)) #now we can filter, show="links", "nonlinks", "possible" or "all"
 ```
 
 <b>False matches and false non-matches</b>
