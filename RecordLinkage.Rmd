@@ -2,7 +2,9 @@
 title: "getPairs-Funktion im RecordLinkage-Package"
 author: "Omar Besic, Thierry Schmidt, Chantal Zbinden"
 date: "5/25/2019"
-output: html_document
+output:
+  html_document:
+    toc: true
 ---
 <span style="color:blue">
 ```{r setup, include=FALSE}
@@ -38,7 +40,7 @@ head(RLdata500)
 <p><span style="color:blue"><strong>strcmpfun</strong> = User-defined function for string metric.</span></p>
 
 ```{r compare}
-?compare.dedup()
+#?compare.dedup()
 rec.pairs <- compare.dedup(RLdata500,blockfld = list(1, 3, 5:7),strcmp = c(2,3,4),strcmpfun = levenshteinSim)
 summary(rec.pairs)
 ```
@@ -52,7 +54,7 @@ str(rec.pairs)
 ```
 <li>RLBigdataDedup </li>
 ```{r BigData compare}
-?RLBigDataDedup
+#?RLBigDataDedup
 data <- RLBigDataDedup(RLdata500, identity = identity.RLdata500, blockfld = list(1,3,5:7))
 ```
 <li>RLBigdataLinkage </li>
@@ -77,6 +79,7 @@ Werte von 0 bis 1
 
 <p><span style="color:blue"><b>2. Variante mit emWeight:</b>"Calculates weights for Record Linkage based on an EM algorithm"</span></p>
 Werte von -10 bis 35
+
 #### epiWeigth in example
 ```{r weight}
 rec.pairs <- epiWeights(rec.pairs)
@@ -85,6 +88,7 @@ length(rec.pairs$Wdata) #Anzahl Weights
 head(rec.pairs$Wdata) #Overview of data rparis - weights
 ```
 For each pair a weight has been calculated
+
 ### Vorgehen 3: getPairs()
 
 <li>show paris with the weights of them</li>
