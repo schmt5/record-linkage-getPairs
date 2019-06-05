@@ -33,10 +33,9 @@ data <- RLBigDataDedup(testdata, identity = identity.RLdata500,
 data <- epiWeights(data)
 
 # show all record pairs with weights between 0.5 and 0.6
-getPairs(data, min.weight=0.5, max.weight=0.6)
-
+#head(getPairs(data, min.weight=0.5, max.weight=0.6))
 # show only matches with weight <= 0.5
-getPairs(data, max.weight=0.5, filter.match="match")
+#head(getPairs(data, max.weight=0.5, filter.match="match"))
 
 # classify with one threshold.upper
 # classified record pairs in link, non-link or possible-link based on their weight
@@ -74,13 +73,15 @@ getFalsePos(result) # von wo weiss R das es FalsePos ist?
 # a threshold which minimizes the absolute number of misclassified record pairs is returned.
 optimalThreshold(data)
 
-optimalThreshold(data, my=0.6) # wir akzeptieren viele Falsch-Pos (False-matches)
+#optimalThreshold(data, my=0.6) # wir akzeptieren viele Falsch-Pos (False-matches)
 
 ?getParetoThreshold
+# mean residual life withit you can define the threshold
 getParetoThreshold(data, quantil = 0.95)
 
 
 ?getPairs
+# filter after match, link, non-link
 length(getPairs(result, filter.match="match", filter.link="link")$id)
 length(getPairs(result, filter.match="match", filter.link="nonlink", single.rows=TRUE)$id.1)
 
