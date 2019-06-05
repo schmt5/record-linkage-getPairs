@@ -130,9 +130,34 @@ summary(cldata$prediction)
 head(getPairs(cldata, show="links", single.rows=FALSE)) #now we can filter, show="links", "nonlinks", "possible" or "all"
 ```
 
-<b>False matches and false non-matches</b>
-<li>Synonym = </li>
-<li>Homonym = </li>
+<span style="color:blue"><strong>False matches and false non-matches: </strong></span><br/>
+Now we can check which of the pairs are false-negative and which are false-positive. 
+In other words, which of these pairs form synonyms (false-negative) or homonyms (false-positive)?
+
+<li><span style="color:blue"><strong>Synonym: </strong></span></li>
+Example: Martin and Mäddä: same person is meant, but the pair does not form a link
+```{r Synonym, warning=FALSE}
+data(RLdata500)
+testdata <- RLdata500
+data <- RLBigDataDedup(testdata, identity = identity.RLdata500,
+                       blockfld=list(1,3,5:7),
+                       strcmp = c(2,3,4),
+                       strcmpfun = "levenshtein")
+data <- epiWeights(data)
+result <- epiClassify(data, 0.5)
+```
+
+Give me all synonyms based on my weight of 0.5
+
+```{r getFalseNeg}
+ getFalseNeg(result)
+```
+
+<li><span style="color:blue"><strong>Homonym: </strong></span></li>
+Example: Jan and Jan: not the same person, but the pair forms a link because string is the same
+```{r Homonym}
+ getFalsePos(result)
+```
 
 ### Fragestellung
 <p><span style="color:red">"Dear Professor Sariyar: I am using your great tools to do matching. I got a quick question: In getPairs (matcher or links), we have filter.match = c("match", "unknown", "nonmatch"), filter.link = c("nonlink", "possible", "link"), do we have any ways to calculate theri confidence levels related? Thanks and best regards..."</span></p>
