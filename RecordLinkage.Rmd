@@ -80,7 +80,7 @@ Werte von 0 bis 1
 <p><span style="color:blue"><b>2. Variante mit emWeight:</b>"Calculates weights for Record Linkage based on an EM algorithm"</span></p>
 Werte von -10 bis 35
 
-#### epiWeigth in example
+#### epiWeight in example
 ```{r weight}
 rec.pairs <- epiWeights(rec.pairs)
 length(rec.pairs$pairs$id1) #Anzahl Pairs
@@ -88,6 +88,11 @@ length(rec.pairs$Wdata) #Anzahl Weights
 head(rec.pairs$Wdata) #Overview of data rparis - weights
 ```
 For each pair a weight has been calculated
+
+#### Histogramm of epiWeight
+```{r histo}
+hist(rec.pairs$Wdata)
+```
 
 ### Vorgehen 3: getPairs
 
