@@ -89,7 +89,7 @@ head(rec.pairs$Wdata) #Overview of data rparis - weights
 ```
 For each pair a weight has been calculated
 
-### Vorgehen 3: getPairs()
+### Vorgehen 3: getPairs
 
 <li>show paris with the weights of them</li>
 <li>use filter on weights</li>
@@ -130,13 +130,13 @@ summary(cldata$prediction)
 head(getPairs(cldata, show="links", single.rows=FALSE)) #now we can filter, show="links", "nonlinks", "possible" or "all"
 ```
 
-<span style="color:blue"><strong>False matches and false non-matches: </strong></span><br/>
+###False matches and false non-matches
 Now we can check which of the pairs are false-negative and which are false-positive. 
 In other words, which of these pairs form synonyms (false-negative) or homonyms (false-positive)?
 
 <li><span style="color:blue"><strong>Synonym: </strong></span></li>
-Example: Martin and M√§dd√§: same person is meant, but the pair does not form a link
-```{r Synonym, warning=FALSE}
+Example: Martin and M‰d‰: same person is meant, but the pair does not form a link
+```{r Synonym, warning=FALSE, echo=FALSE}
 data(RLdata500)
 testdata <- RLdata500
 data <- RLBigDataDedup(testdata, identity = identity.RLdata500,
@@ -165,17 +165,18 @@ Example: Jan and Jan: not the same person, but the pair forms a link because str
 ### Threshold determination
 
 #### 1. Clerical Review
-<p><span style="color:blue">Text</span></p>
+
 ```{r threshold cl}
 
 ```
 #### 2. getParetoThreshold
-<p><span style="color:blue">Text</span></p>
+<p><span style="color:blue">Calculates a classification threshold based on a generalized Pareto distribution fitted to the weights distribution of the given data pairs</span></p>
 ```{r threshold parteo}
 
 ```
 #### 3. optimalThreshold
-<p><span style="color:blue">Text</span></p>
+<p><span style="color:blue">Calculates the optimal threshold for weight-based RecordLinkage</span></p> <ul><li><span style="color:blue">my = error bound for false positives</span></li><li><span style="color:blue">ny = error bound for false negatives</span></li>
+
 ```{r threshold optimal}
 
 ```
