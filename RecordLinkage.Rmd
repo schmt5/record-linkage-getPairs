@@ -55,7 +55,8 @@ assign dataframe rec.pairs$pairs to matches
 matches <- rec.pairs$pairs
 ```
 
-give me the matches of all rows on which the restriction had be defined in blockfld for 1 = same | 0  = not same
+give me the matches of all rows on which the restriction had be defined in blockfld <br>
+for 1 = same | 0  = not same
 ```{r matches}
 
 head(matches)
@@ -64,8 +65,8 @@ head(matches)
 ```
 
 ####Example 1 of pairs generated
-show pair in row 2 (id1: 1, id2: 64)
-show patient in row 1
+show pair in row 2 (id1: 1, id2: 64) <br>
+show patient in row 1 <br>
 show patient in row 64
 ```{r example1}
 matches[2,]
@@ -74,8 +75,8 @@ RLdata500[64,]
 ```
 
 ####Example 2 of pairs generated
-show pair in row 13 (id1: 2, id2: 43)
-show patient in row 2
+show pair in row 13 (id1: 2, id2: 43) <br>
+show patient in row 2 <br>
 show patient in row 43
 ```{r example2}
 matches[13,]
@@ -91,11 +92,11 @@ summary(rec.pairs)
 ```
 
 ### Calculate weights
-Variante mit epiWeight:"Calculates weights for record paris based on the EpiLink approach"
-<li>Werte von 0 bis 1</li>
+Variant with epiWeight:"Calculates weights for record paris based on the EpiLink approach"
+<li> Values from 0 to 1</li>
 
-Variante mit emWeight:"Calculates weights for Record Linkage based on an EM algorithm"
-<li>Werte von -10 bis 35</li>
+Values with emWeight:"Calculates weights for Record Linkage based on an EM algorithm"
+<li> Values from -10 to 35</li>
 
 #### epiWeight in example
 Calculating for each record pair the weight based on the EpiLink approch
