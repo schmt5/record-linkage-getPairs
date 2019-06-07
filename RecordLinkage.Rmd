@@ -140,8 +140,8 @@ Now we can check which of the pairs are false-negative and which are false-posit
 In other words, which of these pairs form synonyms (false-negative) or homonyms (false-positive)?
 
 <li><span style="color:blue"><strong>Synonym: </strong></span></li>
-Example: Martin and Mädä: same person is meant, but the pair does not form a link
-```{r Synonym, warning=FALSE, echo=FALSE}
+Example: Martin and Maeddae: same person is meant, but the pair does not form a link
+```{r Synonym, warning=FALSE}
 data(RLdata500)
 testdata <- RLdata500
 data <- RLBigDataDedup(testdata, identity = identity.RLdata500,
